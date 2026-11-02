@@ -1,1 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday, Maïssane!</title>
+<style>
+:root{--bg:#062a30;--ink:#e8fffc;--card:#0c3f46;--pop:#40e0d0;--mint:#ffe66d;--line:#e8fffc;color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 
+
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:radial-gradient(ellipse at 20% 0%,rgba(64,224,208,.22),transparent 55%),var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.6;overflow-x:hidden}
+main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:clamp(20px,5vw,56px)}#fly{z-index:0}
+.hero{display:grid;grid-template-columns:1.6fr 1fr;gap:32px;align-items:center;min-height:78vh}
+.hero p{margin:0}.hero>div{min-width:0}
+.lead{font-size:1.1rem}
+h1{font-family:"Arial Black","Helvetica Neue",Arial,sans-serif;font-size:clamp(2.6rem,9vw,5.6rem);line-height:.98;letter-spacing:-.02em;margin:.2em 0 .25em;white-space:nowrap;text-shadow:0 0 24px rgba(64,224,208,.5)}
+.age{font-size:1.4rem;font-style:italic;margin-bottom:.6em}
+.note{max-width:54ch;font-size:1.15rem;white-space:pre-line}
+button{font:inherit;cursor:pointer;border:2px solid var(--line);background:var(--pop);color:#062a30;padding:.7em 1.3em;border-radius:999px;font-weight:700}
+button:hover{transform:translateY(-1px)}
+button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+.cakewrap{text-align:center}
+.cakewrap svg{width:100%;max-width:340px;height:auto}
+.flame{transform-origin:center bottom;animation:flick .5s ease-in-out infinite alternate}
+.out .flame{display:none}
+@keyframes flick{from{transform:scale(1,1)}to{transform:scale(.88,1.12)}}
+#msg{min-height:1.6em;margin:.6em auto 1em;font-style:italic;max-width:24ch}#msg:not(:empty){background:var(--card);border:2px solid var(--line);border-radius:18px;padding:.4em .9em}.spark{display:inline-block;animation:tw 1.6s ease-in-out infinite alternate}@keyframes tw{from{opacity:.4;transform:scale(.8)}to{opacity:1;transform:scale(1.15)}}
+h2{font-family:"Arial Black","Helvetica Neue",Arial,sans-serif;font-size:1.8rem;margin:2.2em 0 .6em}
+.wishes{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.wish{background:var(--card);border:2px solid var(--line);border-radius:6px 22px 6px 22px;padding:16px 18px}
+.wish b{display:block;margin-top:.5em;color:var(--pop)}
+.wish p{margin:0}
+form.add,.panel{display:grid;gap:10px;margin-top:20px;max-width:480px}
+input,textarea{font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:10px;padding:.6em .8em;width:100%}
+label{display:grid;gap:4px;font-weight:700}
+details{margin-top:3em;border-top:2px solid var(--line);padding-top:1em}
+summary{cursor:pointer;font-weight:700}
+canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+@media (max-width:720px){.hero{grid-template-columns:1fr;min-height:0}.cakewrap{order:-1}}
+@media (prefers-reduced-motion:reduce){.flame,.spark{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="fly" aria-hidden="true"></canvas>
+<canvas id="fx" aria-hidden="true"></canvas>
+<main>
+  <section class="hero">
+    <div>
+      <p class="lead"><span class="spark">✦</span> Today is all about <span class="spark">✦</span></p>
+      <h1 id="name">Maïssane</h1>
+      <p class="age" id="age">Happy 14th birthday!</p>
+      <p class="note" id="note" lang="fr">Joyeux anniversaire à la personne la plus précieuse de ma vie. ❤️
+
+Je ne sais pas si les mots suffiront un jour à exprimer à quel point tu comptes pour moi. Ta présence rend mes journées plus belles et ma vie plus lumineuse. Je te souhaite tout le bonheur que ton cœur mérite, une vie remplie d’amour, de paix et de réussite. Merci d’être cette personne si spéciale dans ma vie. Peu importe où la vie nous mènera, tu garderas toujours une place particulière dans mon cœur.
+
+Profite pleinement de cette journée, car tu mérites tout ce qu’il y a de plus beau au monde. ❤️</p>
+    </div>
+    <div class="cakewrap" id="cake">
+      <svg viewBox="0 0 240 230" role="img" aria-label="Birthday cake with three candles">
+        <ellipse cx="120" cy="212" rx="108" ry="12" fill="#000" opacity=".4"/>
+        <rect x="26" y="146" width="188" height="62" rx="10" fill="var(--pop)" stroke="var(--line)" stroke-width="3"/>
+        <rect x="52" y="98" width="136" height="52" rx="10" fill="var(--mint)" stroke="var(--line)" stroke-width="3"/>
+        <path d="M26 156q16 20 32 0t32 0 32 0 32 0 32 0 28 0" fill="none" stroke="#fff6d6" stroke-width="9" stroke-linecap="round"/>
+        <path d="M52 108q17 16 34 0t34 0 34 0 34 0" fill="none" stroke="#fff6d6" stroke-width="8" stroke-linecap="round"/>
+        <g stroke="var(--line)" stroke-width="2.5">
+          <rect x="84" y="62" width="12" height="38" fill="#ffd23f"/>
+          <rect x="114" y="52" width="12" height="48" fill="#ee4266"/>
+          <rect x="144" y="62" width="12" height="38" fill="#4cc9f0"/>
+        </g>
+        <g fill="#ff9f1c" stroke="var(--line)" stroke-width="2">
+          <path class="flame" d="M90 58c-8-9-2-18 0-22 2 4 8 13 0 22z"/>
+          <path class="flame" d="M120 48c-8-9-2-18 0-22 2 4 8 13 0 22z"/>
+          <path class="flame" d="M150 58c-8-9-2-18 0-22 2 4 8 13 0 22z"/>
+        </g>
+      </svg>
+      <p id="msg" aria-live="polite"></p>
+      <button id="blow" type="button">Blow out the candles</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Birthday wishes</h2>
+    <div class="wishes" id="wishes"></div>
+    <form class="add" id="addForm">
+      <label>Your name<input id="wName" maxlength="40" required></label>
+      <label>Your wish<textarea id="wText" rows="3" maxlength="240" required></textarea></label>
+      <button type="submit">Add my wish</button>
+    </form>
+  </section>
+
+  <details>
+    <summary>Personalize this page</summary>
+    <div class="panel">
+      <label>Name<input id="inName" maxlength="40" placeholder="Their name"></label>
+      <label>Turning<input id="inAge" type="number" min="1" max="120" value="14" placeholder="Age"></label>
+      <label>Favorite color<input id="inColor" type="color" value="#062a30"></label>
+      <label>Message<textarea id="inNote" rows="8" maxlength="900" placeholder="Write your message here. A full paragraph fits."></textarea></label>
+    </div>
+  </details>
+</main>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var cake=$("cake"),msg=$("msg"),blow=$("blow"),defNote=$("note").textContent;
+
+function suffix(n){var s=["th","st","nd","rd"],v=n%100;return n+(s[(v-20)%10]||s[v]||s[0])}
+$("inName").addEventListener("input",function(e){$("name").textContent=e.target.value.trim()||"Maïssane";fit()});
+$("inAge").addEventListener("input",function(e){var n=parseInt(e.target.value,10);$("age").textContent=n>0?"Happy "+suffix(n)+" birthday!":""});
+$("inNote").addEventListener("input",function(e){$("note").textContent=e.target.value.trim()||defNote});
+
+$("inColor").addEventListener("input",function(e){
+  var h=e.target.value,r=parseInt(h.substr(1,2),16),g=parseInt(h.substr(3,2),16),b=parseInt(h.substr(5,2),16),
+  dk=(0.299*r+0.587*g+0.114*b)<140,s=document.documentElement.style,t=dk?"#fff6d6":"#1b1b3a";
+  s.setProperty("--bg",h);s.setProperty("--ink",t);s.setProperty("--line",t);
+  s.setProperty("--card",dk?"rgba(255,255,255,.14)":"rgba(255,255,255,.6)");
+});
+var wishes=[
+ {n:"Everyone who loves you",t:"May this year bring more laughter, more cake and fewer reasons to check your email."},
+ {n:"The people at the party",t:"Thank you for being the kind of person who makes every room warmer."},
+ {n:"Your future self",t:"Everything you’re hoping for this year is closer than it looks."}
+];
+function renderWishes(){
+  var box=$("wishes");box.textContent="";
+  wishes.forEach(function(w){
+    var d=document.createElement("div");d.className="wish";
+    var p=document.createElement("p");p.textContent="“"+w.t+"”";
+    var b=document.createElement("b");b.textContent=w.n;
+    d.appendChild(p);d.appendChild(b);box.appendChild(d);
+  });
+}
+$("addForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  wishes.unshift({n:$("wName").value.trim(),t:$("wText").value.trim()});
+  $("wText").value="";renderWishes();burst(0.5,0.6,60);
+});
+renderWishes();
+
+var cv=$("fx"),cx=cv.getContext("2d"),parts=[],running=false;
+function size(){cv.width=innerWidth*devicePixelRatio;cv.height=innerHeight*devicePixelRatio}
+size();addEventListener("resize",size);
+var cols=["#b6fff3","#40e0d0","#ffe66d","#7ff5e6","#a8e6ff","#fff08c"];
+function burst(x,y,n){
+  if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+  for(var i=0;i<n;i++){
+    var a=Math.random()*Math.PI*2,s=4+Math.random()*9;
+    parts.push({x:x*cv.width,y:y*cv.height,vx:Math.cos(a)*s*devicePixelRatio,vy:(Math.sin(a)*s-5)*devicePixelRatio,r:(4+Math.random()*5)*devicePixelRatio,c:cols[i%cols.length],rot:Math.random()*6,life:160+Math.random()*80});
+  }
+  if(!running){running=true;requestAnimationFrame(tick)}
+}
+function tick(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  parts=parts.filter(function(p){return p.life>0&&p.y<cv.height+40});
+  parts.forEach(function(p){
+    p.vy+=0.04*devicePixelRatio;p.vx*=0.97;p.x+=p.vx;p.y+=p.vy;p.rot+=0.2;p.life--;
+    cx.save();cx.globalAlpha=Math.min(1,p.life/40);cx.shadowColor=p.c;cx.shadowBlur=14;cx.fillStyle=p.c;cx.beginPath();cx.arc(p.x,p.y,p.r*.7,0,6.28);cx.fill();cx.restore();
+  });
+  if(parts.length)requestAnimationFrame(tick);else running=false;
+}
+
+var fl=$("fly"),fc=fl.getContext("2d"),bugs=[],still=matchMedia("(prefers-reduced-motion:reduce)").matches;
+function fsize(){fl.width=innerWidth;fl.height=innerHeight}
+fsize();addEventListener("resize",fsize);
+for(var k=0;k<38;k++)bugs.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,a:Math.random()*6.28,s:.2+Math.random()*.4,p:Math.random()*6.28,r:1.5+Math.random()*2.2});
+function fly(){
+  fc.clearRect(0,0,fl.width,fl.height);
+  bugs.forEach(function(b){
+    if(!still){b.a+=(Math.random()-.5)*.25;b.x+=Math.cos(b.a)*b.s;b.y+=Math.sin(b.a)*b.s-.05;b.p+=.03}
+    if(b.x<-10)b.x=fl.width+10;if(b.x>fl.width+10)b.x=-10;if(b.y<-10)b.y=fl.height+10;if(b.y>fl.height+10)b.y=-10;
+    var al=.35+.65*Math.abs(Math.sin(b.p)),g=fc.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r*6);
+    g.addColorStop(0,"rgba(150,255,235,"+al+")");g.addColorStop(1,"rgba(150,255,235,0)");
+    fc.fillStyle=g;fc.beginPath();fc.arc(b.x,b.y,b.r*6,0,6.28);fc.fill();
+  });
+  if(!still)requestAnimationFrame(fly);
+}
+fly();
+function fit(){
+  var h=$("name"),s;h.style.fontSize="";
+  s=parseFloat(getComputedStyle(h).fontSize);
+  while(h.scrollWidth>h.clientWidth&&s>22){s-=2;h.style.fontSize=s+"px"}
+}
+fit();addEventListener("resize",fit);addEventListener("load",fit);
+var out=false;
+blow.addEventListener("click",function(){
+  out=!out;
+  cake.classList.toggle("out",out);
+  if(out){
+    msg.textContent="Wish sent into the night! Happy birthday!";
+    blow.textContent="Light them again";
+    burst(.3,.5,70);burst(.7,.5,70);burst(.5,.35,70);
+  }else{
+    msg.textContent="";blow.textContent="Blow out the candles";
+  }
+});
+})();
+</script>
+</body>
+</html>
